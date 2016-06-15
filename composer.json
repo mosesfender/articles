@@ -1,7 +1,9 @@
 {
     "name": "mosesfender/articles",
     "description": "Articles module for Yii2",
-    "keywords": ["yii"],
+    "keywords": [
+        "yii"
+    ],
     "type": "yii2-extension",
     "authors": [
         {
@@ -11,11 +13,14 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "yiisoft/yii2": "~2.0.4"
+        "yiisoft/yii2": "2.*"
     },
     "autoload": {
         "psr-4": {
             "mosesfender\\articles\\": ""
         }
+    },
+    "extra": {
+        "bootstrap": "mosesfender\\articles\\Bootstrap"
     }
 }

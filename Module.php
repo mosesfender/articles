@@ -7,10 +7,32 @@
 
 namespace mosesfender\articles;
 
-class Module extends \yii\base\Module {
+class Module extends \yii\base\Module implements BootstrapInterface {
+
+    public function bootstrap($app) {
+        $app->i18n->translations['articles'] = [
+            'class' => 'yii\i18n\PhpMessageSource',
+            'sourceLanguage' => 'ru-RU',
+            'forceTranslation' => true,
+            'basePath' => '@mosesfender/articles/messages',
+            'fileMap' => [
+                '@mosesfender/articles/messages' => 'articles.php',
+            ],
+        ];
+    }
 
     public function init() {
         parent::init();
-        die(__FILE__.__METHOD__);
+        $app->i18n->translations['articles'] = [
+            'class' => 'yii\i18n\PhpMessageSource',
+            'sourceLanguage' => 'ru-RU',
+            'forceTranslation' => true,
+            'basePath' => '@mosesfender/articles/messages',
+            'fileMap' => [
+                '@mosesfender/articles/messages' => 'articles.php',
+            ],
+        ];
+        die(__FILE__ . __METHOD__);
     }
+
 }
