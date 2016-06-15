@@ -1,0 +1,21 @@
+{
+    "name": "mosesfender/articles",
+    "description": "Articles module for Yii2",
+    "keywords": ["yii"],
+    "type": "yii2-extension",
+    "authors": [
+        {
+            "name": "Moses Fender",
+            "email": "mosesfender@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "yiisoft/yii2": "~2.0.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "mosesfender\\articles\\": ""
+        }
+    }
+}
