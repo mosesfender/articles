@@ -11,6 +11,6 @@ class Module extends \yii\base\Module {
 
     public function init() {
         parent::init();
-        die(__FILE__.__METHOD__.__LINE__);
+        die(__FILE__.__METHOD__);
     }
 }
