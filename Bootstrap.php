@@ -12,9 +12,8 @@
 namespace mosesfender\articles;
 
 use yii\base\Application;
-use yii\base\BootstrapInterface;
 
-class Bootstrap implements BootstrapInterface {
+class Bootstrap implements \yii\base\BootstrapInterface {
 
     /** @inheritdoc */
     public function bootstrap($app) {

@@ -7,7 +7,7 @@
 
 namespace mosesfender\articles;
 
-class Module extends \yii\base\Module implements BootstrapInterface {
+class Module extends \yii\base\Module implements \yii\base\BootstrapInterface {
 
     public function bootstrap($app) {
         $app->i18n->translations['articles'] = [
@@ -32,7 +32,6 @@ class Module extends \yii\base\Module implements BootstrapInterface {
                 '@mosesfender/articles/messages' => 'articles.php',
             ],
         ];
-        die(__FILE__ . __METHOD__);
     }
 
 }
