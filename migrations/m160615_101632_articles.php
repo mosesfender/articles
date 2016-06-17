@@ -16,7 +16,11 @@ class m160615_101632_articles extends Migration {
             $this->createTable(self::TAB_ARTICLES, [
                 "id" => $this->primaryKey(),
                 "cat_id" => $this->integer()->notNull(),
+                "art_title" => $this->string()->notNull(),
+                "art_subtitle" => $this->string(),
                 "art_text" => $this->text(),
+                "created_at" => $this->dateTime(),
+                "update_at" => $this->dateTime(),
                 "status" => $this->integer()->notNull(),
             ]);
         }
