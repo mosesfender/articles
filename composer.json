@@ -1,6 +1,7 @@
 {
     "name": "mosesfender/articles",
     "description": "Articles module for Yii2",
+    "version": "0.0.4",
     "keywords": [
         "yii"
     ],
