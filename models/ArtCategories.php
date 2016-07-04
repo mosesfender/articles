@@ -66,5 +66,5 @@ class ArtCategories extends \yii\db\ActiveRecord {
     public function getArticles() {
         return $this->hasMany(Articles::className(), ["cat_id" => "id"]);
     }
-
+    
 }

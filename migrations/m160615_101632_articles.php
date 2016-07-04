@@ -5,6 +5,7 @@ use yii\db\Migration;
 class m160615_101632_articles extends Migration {
 
     const TAB_ARTICLES = "{{%articles}}";
+    const TAB_ARTICLES_TREE = "{{%articles_tree}}";
 
     public function up() {
         $tableOptions = null;
@@ -19,10 +20,20 @@ class m160615_101632_articles extends Migration {
                 "art_title" => $this->string()->notNull(),
                 "art_subtitle" => $this->string(),
                 "art_text" => $this->text(),
-                "created_at" => $this->dateTime(),
-                "update_at" => $this->dateTime(),
-                "status" => $this->integer()->notNull(),
+                "created_at" => $this->dateTime()->defaultValue(0),
+                "update_at" => $this->dateTime()->defaultValue(0),
+                "status" => $this->integer()->notNull()->defaultValue(0),
             ]);
+            $this->createIndex("i_status", self::TAB_ARTICLES, "status");
+        }
+        if ($this->db->schema->getTableSchema(self::TAB_ARTICLES_TREE, true) === null) {
+            $this->createTable(self::TAB_ARTICLES_TREE, [
+                "art_id" => $this->integer()->notNull()->defaultValue(0),
+                "cat_id" => $this->integer()->notNull()->defaultValue(0)
+            ]);
+            $this->createIndex("art_tree", self::TAB_ARTICLES_TREE, ["art_id", "cat_id"], true);
+            $this->createIndex("art_id", self::TAB_ARTICLES_TREE, "art_id");
+            $this->createIndex("cat_id", self::TAB_ARTICLES_TREE, "cat_id");
         }
     }
 
@@ -30,16 +41,9 @@ class m160615_101632_articles extends Migration {
         if ($this->db->schema->getTableSchema(self::TAB_ARTICLES, true) !== null) {
             $this->dropTable(self::TAB_ARTICLES);
         }
+        if ($this->db->schema->getTableSchema(self::TAB_ARTICLES_TREE, true) !== null) {
+            $this->dropTable(self::TAB_ARTICLES_TREE);
+        }
     }
 
-    /*
-      // Use safeUp/safeDown to run migration code within a transaction
-      public function safeUp()
-      {
-      }
-
-      public function safeDown()
-      {
-      }
-     */
 }
