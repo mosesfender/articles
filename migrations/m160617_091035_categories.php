@@ -24,11 +24,14 @@ class m160617_091035_categories extends Migration {
             $this->createTable(self::TAB_CATEGORIES_TREE, [
                 "cat_parent_id" => $this->integer()->notNull()->defaultValue(0),
                 "cat_child_id" => $this->integer()->notNull()->defaultValue(0),
+                "status" => $this->integer()->notNull()->defaultValue(0),
+                "sort" => $this->integer()->notNull()->defaultValue(0)
             ]);
 
             $this->createIndex("cat_tree", self::TAB_CATEGORIES_TREE, ["cat_parent_id", "cat_child_id"], TRUE);
             $this->createIndex("cat_parent", self::TAB_CATEGORIES_TREE, ["cat_parent_id"]);
             $this->createIndex("cat_child", self::TAB_CATEGORIES_TREE, ["cat_child_id"]);
+            $this->createIndex("status", self::TAB_CATEGORIES_TREE, ["status"]);
         }
     }
 

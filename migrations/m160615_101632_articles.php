@@ -29,11 +29,14 @@ class m160615_101632_articles extends Migration {
         if ($this->db->schema->getTableSchema(self::TAB_ARTICLES_TREE, true) === null) {
             $this->createTable(self::TAB_ARTICLES_TREE, [
                 "art_id" => $this->integer()->notNull()->defaultValue(0),
-                "cat_id" => $this->integer()->notNull()->defaultValue(0)
+                "cat_id" => $this->integer()->notNull()->defaultValue(0),
+                "status" => $this->integer()->notNull()->defaultValue(0),
+                "sort" => $this->integer()->notNull()->defaultValue(0)
             ]);
             $this->createIndex("art_tree", self::TAB_ARTICLES_TREE, ["art_id", "cat_id"], true);
             $this->createIndex("art_id", self::TAB_ARTICLES_TREE, "art_id");
             $this->createIndex("cat_id", self::TAB_ARTICLES_TREE, "cat_id");
+            $this->createIndex("status", self::TAB_ARTICLES_TREE, ["status"]);
         }
     }
 
